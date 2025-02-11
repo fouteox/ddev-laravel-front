@@ -6,5 +6,5 @@ hooks:
   post-start:
     - exec: >
         if [ ! -d node_modules ]; then
-          ${JAVASCRIPT_PACKAGE_MANAGER} install;
+          ${PACKAGE_MANAGER} install;
         fi
