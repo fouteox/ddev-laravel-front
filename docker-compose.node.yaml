@@ -20,7 +20,7 @@ services:
       API_URL_CLIENT: https://api.${DDEV_SITENAME}.ddev.site
       API_URL_SERVER: http://web
     healthcheck:
-      test: [ "CMD", "curl -fs http://localhost:3000" ]
+      test: [ "CMD-SHELL", "curl -fs http://localhost:3000" ]
       interval: 10s
       timeout: 5s
       retries: 10
