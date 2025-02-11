@@ -5,19 +5,5 @@ project_files:
   - node/
 
 post_install_actions:
-  - |
-    if [ -f "${DDEV_APPROOT}/.ddev/.env.node" ]; then
-      PACKAGE_MANAGER=$(grep "^PACKAGE_MANAGER=" "${DDEV_APPROOT}/.ddev/.env.node" | cut -d '=' -f2 | tr -d '"' | tr -d "'")
-      if [ "$PACKAGE_MANAGER" = "bun" ]; then
-        sed -i 's/node:22-slim/oven\/bun:1-slim/' ${DDEV_APPROOT}/.ddev/node/Dockerfile
-        sed -i 's/node/bun/g' ${DDEV_APPROOT}/.ddev/node/Dockerfile
-    
-        sed -i 's/npx -y nuxi@latest init \. --gitInit false --packageManager npm --force/bun x --yes nuxi@latest init . --gitInit false --packageManager bun --force/' ${DDEV_APPROOT}/.ddev/node/docker-entrypoint.sh
-    
-        sed -i 's/npm install --save laravel-echo pusher-js/bun add -d laravel-echo pusher-js/' ${DDEV_APPROOT}/.ddev/node/docker-entrypoint.sh
-    
-        sed -i 's/npm install/bun install/' ${DDEV_APPROOT}/.ddev/node/docker-entrypoint.sh
-    
-        sed -i 's/npm run dev/bun --bun run dev/' ${DDEV_APPROOT}/.ddev/node/docker-entrypoint.sh
-      fi
-    fi
+  - chmod +x ${DDEV_APPROOT}/.ddev/node/setup-package-manager.sh
+  - ${DDEV_APPROOT}/.ddev/node/setup-package-manager.sh
