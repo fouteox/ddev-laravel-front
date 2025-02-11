@@ -3,6 +3,8 @@ name: laravel-front
 project_files:
   - docker-compose.node.yaml
   - node/
+  - commands/laravel-front/front
+  - config.laravel-front.yaml
 
 post_install_actions:
   - chmod +x ${DDEV_APPROOT}/.ddev/node/setup-package-manager.sh

@@ -1,5 +1,8 @@
 #ddev-generated
 services:
+  web:
+    environment:
+      VIRTUAL_HOST: api.${DDEV_SITENAME}.ddev.site
   laravel-front:
     container_name: ddev-${DDEV_SITENAME}-laravel-front
     build:
@@ -8,6 +11,9 @@ services:
         gid: ${DDEV_GID}
         uid: ${DDEV_UID}
         package_manager: ${PACKAGE_MANAGER:-npm}
+        VIRTUAL_HOST: ${DDEV_SITENAME}.ddev.site
+        HTTP_EXPOSE: 3000:3000
+        HTTPS_EXPOSE: 443:3000
     environment:
       HAS_REVERB: ${HAS_REVERB:-false}
       PACKAGE_MANAGER: ${PACKAGE_MANAGER:-npm}

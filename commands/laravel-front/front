@@ -1,0 +1,5 @@
+#!/bin/sh
+#ddev-generated
+## Description: Enter the front container
+
+bash "$@"
