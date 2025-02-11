@@ -1,3 +1,4 @@
+#ddev-generated
 FROM node:22-slim
 
 ARG uid=0

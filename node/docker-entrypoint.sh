@@ -1,4 +1,5 @@
 #!/bin/sh
+#ddev-generated
 set -e
 
 if [ ! -f package.json ]; then
