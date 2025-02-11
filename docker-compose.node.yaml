@@ -1,0 +1,23 @@
+#ddev-generated
+services:
+  laravel-front:
+    container_name: ddev-${DDEV_SITENAME}-laravel-front
+    build:
+      context: node
+      args:
+        gid: ${DDEV_GID}
+        uid: ${DDEV_UID}
+        package_manager: ${PACKAGE_MANAGER:-npm}
+    environment:
+      HAS_REVERB: ${HAS_REVERB:-false}
+      PACKAGE_MANAGER: ${PACKAGE_MANAGER:-npm}
+    restart: "no"
+    # These labels ensure this service is discoverable by ddev.
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+
+    volumes:
+      - ".:/mnt/ddev_config"
+      - "ddev-global-cache:/mnt/ddev-global-cache"
+      - "${DDEV_APPROOT}/front:/app"
