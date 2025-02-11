@@ -1,3 +1,10 @@
 #ddev-generated
 working_dir:
   laravel-front: /app
+
+hooks:
+  post-start:
+    - exec: >
+        if [ ! -d node_modules ]; then
+          ${JAVASCRIPT_PACKAGE_MANAGER} install;
+        fi
