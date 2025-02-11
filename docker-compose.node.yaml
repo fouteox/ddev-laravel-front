@@ -17,7 +17,8 @@ services:
       VIRTUAL_HOST: ${DDEV_SITENAME}.ddev.site
       HTTP_EXPOSE: 3000:3000
       HTTPS_EXPOSE: 443:3000
-      API_URL: https://api.${DDEV_SITENAME}.ddev.site
+      API_URL_CLIENT: https://api.${DDEV_SITENAME}.ddev.site
+      API_URL_SERVER: http://web
     restart: "no"
     # These labels ensure this service is discoverable by ddev.
     labels:
