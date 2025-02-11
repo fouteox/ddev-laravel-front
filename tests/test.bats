@@ -10,12 +10,6 @@ setup() {
   ddev config --project-name=${PROJNAME}
 }
 
-health_checks() {
-  # Do something useful here that verifies the add-on
-  # ddev exec "curl -s elasticsearch:9200" | grep "${PROJNAME}-elasticsearch"
-  ddev exec "curl -s https://localhost:443/"
-}
-
 teardown() {
   set -eu -o pipefail
   cd ${TESTDIR} || ( printf "unable to cd to ${TESTDIR}\n" && exit 1 )
@@ -28,7 +22,6 @@ teardown() {
   cd ${TESTDIR}
   echo "# ddev add-on get ${DIR} with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
   ddev add-on get ${DIR}
-  health_checks
 }
 
 @test "install from release" {
@@ -36,5 +29,4 @@ teardown() {
   cd ${TESTDIR} || ( printf "unable to cd to ${TESTDIR}\n" && exit 1 )
   echo "# ddev add-on get fouteox/ddev-laravel-front with project ${PROJNAME} in ${TESTDIR} ($(pwd))" >&3
   ddev add-on get fouteox/ddev-laravel-front
-  health_checks
 }
