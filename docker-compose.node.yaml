@@ -11,12 +11,13 @@ services:
         gid: ${DDEV_GID}
         uid: ${DDEV_UID}
         package_manager: ${PACKAGE_MANAGER:-npm}
-        VIRTUAL_HOST: ${DDEV_SITENAME}.ddev.site
-        HTTP_EXPOSE: 3000:3000
-        HTTPS_EXPOSE: 443:3000
     environment:
       HAS_REVERB: ${HAS_REVERB:-false}
       PACKAGE_MANAGER: ${PACKAGE_MANAGER:-npm}
+      VIRTUAL_HOST: ${DDEV_SITENAME}.ddev.site
+      HTTP_EXPOSE: 3000:3000
+      HTTPS_EXPOSE: 443:3000
+      API_URL: http://web
     restart: "no"
     # These labels ensure this service is discoverable by ddev.
     labels:
