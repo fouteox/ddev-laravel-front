@@ -8,6 +8,10 @@ WORKDIR /app
 
 USER root
 
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends curl && \
+    rm -rf /var/lib/apt/lists/*
+
 RUN if [ "$uid" != 0 ]; then \
     if getent group "$gid" > /dev/null; then \
         moved_group_id="99$gid"; \

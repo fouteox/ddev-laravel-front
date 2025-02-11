@@ -22,17 +22,17 @@ if [ ! -f package.json ]; then
     CONFIG_FILE="nuxt.config.ts"
     if [ -f "$CONFIG_FILE" ]; then
         sed_inplace "s/export default defineNuxtConfig({/export default defineNuxtConfig({\\
-      vite: {\\
-        server: {\\
-          allowedHosts: true\\
-        }\\
-      },\\
-      runtimeConfig: {\\
-        public: {\\
-          clientApiURL: process.env.API_URL_CLIENT,\\
-          serverApiURL: process.env.API_URL_SERVER\\
-        }\\
-      },/" "$CONFIG_FILE"
+  vite: {\\
+    server: {\\
+      allowedHosts: true\\
+    }\\
+  },\\
+  runtimeConfig: {\\
+    public: {\\
+      clientApiURL: process.env.API_URL_CLIENT,\\
+      serverApiURL: process.env.API_URL_SERVER\\
+    }\\
+  },/" "$CONFIG_FILE"
     fi
 fi
 
