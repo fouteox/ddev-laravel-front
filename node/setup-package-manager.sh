@@ -11,6 +11,8 @@ if [ ! -f "$ENV_FILE" ]; then
     exit 0
 fi
 
+mkdir "${DDEV_APPROOT}/front"
+
 PACKAGE_MANAGER=$(grep "^PACKAGE_MANAGER=" "$ENV_FILE" | cut -d '=' -f2 | tr -d '"' | tr -d "'")
 
 if [ "$PACKAGE_MANAGER" = "bun" ]; then
